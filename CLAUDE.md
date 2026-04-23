@@ -114,8 +114,9 @@ statistics, not raw data) are shipped.
 
 ## Deployment
 
-Intended for Streamlit Community Cloud. Pushing to `main` triggers
-automatic redeployment.
+Deployed on Streamlit Community Cloud from the public GitHub repo
+**[lgmendesAibili/dr-staging-predictor](https://github.com/lgmendesAibili/dr-staging-predictor)**.
+Pushing to `main` triggers automatic redeployment.
 
 ### Streamlit Cloud Requirements
 
@@ -123,14 +124,32 @@ automatic redeployment.
 app, including ones that appear indirectly (e.g. `pandas`, `ipython`,
 `sparklines`). Streamlit Cloud installs only what is listed — missing
 transitive dependencies can cause the deployment to hang silently in
-"preparing" without an error. See the keratoconus-predictor sibling repo's
-`lessons_learned.md` for the original incident that informed this list.
+"preparing" without an error. See `lessons_learned.md` for details.
+
+### Hiding the Source Link
+
+`.streamlit/config.toml` sets `[client] toolbarMode = "viewer"` to suppress
+developer toolbar items in the deployed app. To **also** hide the GitHub
+"View source" badge, untick **Settings → General → "Show app source code"**
+in the Streamlit Cloud dashboard. Neither prevents source access if the repo
+is public — for that, change repo visibility on GitHub
+(`gh repo edit --visibility private`) and re-authorize Streamlit Cloud with
+private-repo scope.
 
 ### Git Authentication (GitHub)
 
 GitHub no longer supports password authentication over HTTPS. Use:
 ```bash
 gh auth login  # GitHub.com → HTTPS → web browser → one-time code
+```
+
+### Local Development Environment
+
+The conda env `shap_env` (Python 3.11) already has shap, scikit-learn,
+matplotlib, pandas, numpy, joblib, ipython. Add the missing two:
+```bash
+/home/lgmendes/miniconda3/envs/shap_env/bin/pip install "streamlit>=1.28.0" "sparklines>=0.4.2"
+/home/lgmendes/miniconda3/envs/shap_env/bin/streamlit run app.py
 ```
 
 ## Domain Glossary

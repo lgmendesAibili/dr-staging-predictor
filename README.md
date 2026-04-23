@@ -39,7 +39,9 @@ severity** — the ETDRS grade at enrolment — not a progression prediction.
 
 ## Live Demo
 
-Deployed on Streamlit Community Cloud.
+Deployed on Streamlit Community Cloud from
+[`lgmendesAibili/dr-staging-predictor`](https://github.com/lgmendesAibili/dr-staging-predictor).
+Push to `main` to redeploy.
 
 ## Run Locally
 
@@ -82,8 +84,9 @@ Full training-set and held-out metrics are in `training_metrics_*.md` and
 ├── training_metrics_*.md                             # Training-set performance report
 ├── evaluation_*_all.md                               # Evaluation on 161 samples (incl. imputed)
 ├── evaluation_*_nonmissing.md                        # Evaluation on 124 non-missing samples
-└── .streamlit/
-    └── config.toml                                   # Streamlit theme
+├── .streamlit/
+│   └── config.toml                                   # Streamlit theme + viewer toolbar mode
+└── lessons_learned.md                                # Deployment / infra incidents and fixes
 ```
 
 ## Dependencies
