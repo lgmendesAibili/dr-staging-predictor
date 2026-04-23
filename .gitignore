@@ -1,0 +1,31 @@
+# Patient data — must NEVER be committed
+localData/
+model-evaluation/
+X_train_*.pkl
+
+# Generated reports
+training_metrics.md
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
